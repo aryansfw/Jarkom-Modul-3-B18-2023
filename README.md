@@ -412,7 +412,12 @@ Kemudian restart service dhcp menggunakan `service isc-dhcp-server restart`. Lal
 $ lynx 192.187.2.2
 ```
 
-Hasil yang diperoleh seperti berikut. Jika client mengakses `192.187.2.2` maka akan muncul website seperti biasa. Namun jika selain client mengakses `192.187.2.2` maka akan muncul error.
+Hasil yang diperoleh seperti berikut. Jika client mengakses `192.187.2.2` maka akan muncul website seperti biasa.
+![12 success](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/115603634/e5281316-06b3-475c-bb56-e00a589839f7)
+
+Namun jika selain client mengakses `192.187.2.2` maka akan muncul error.
+![12 fail](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/115603634/36bbe38f-c348-4491-8eed-171055cc711c)
+
 
 ## Nomor 13
 
@@ -753,11 +758,17 @@ Untuk percobaannya kita bisa menggunakan api `POST /auth/register` dari nomor se
 
 Untuk soal ini, kita bisa menambahkan konfigurasi berikut pada Eisen di `/etc/nginx/sites-available/lb-eisen` kemudian restart service nginx menggunakan `service nginx restart`.
 
-````
+```
 upstream riegelcanyon {
 +++	least_conn;
 	server 192.187.4.1; # IP Fern
 	server 192.187.4.2; # IP Flamme
 	server 192.187.4.3; # IP Frieren
-}```
-````
+}
+```
+
+Untuk testingnya kita bisa menggunakan command berikut.
+
+```
+$ ab -n 100 -c 10 192.187.2.2:81/ 
+```
