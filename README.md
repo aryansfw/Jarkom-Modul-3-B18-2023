@@ -1,4 +1,4 @@
-# Jarkom-Modul-2-B18-2023
+# Jarkom-Modul-3-B18-2023
 
 ## Kelompok B18
 
@@ -8,89 +8,84 @@
 | Shazia Ingeyla Naveeda | 5025211203 |
 
 ## Nomor 0
-
 ### Soal
-
 Setelah mengalahkan Demon King, perjalanan berlanjut. Kali ini, kalian diminta untuk melakukan register domain berupa riegel.canyon.yyy.com untuk worker Laravel dan granz.channel.yyy.com untuk worker PHP mengarah pada worker yang memiliki IP [prefix IP].x.1.
 
 ##### Penyelesaian
-
 Pada node `DNS Server` lakukan konfigurasi zone untuk domain dengan menggunakan bind9. Pada `/etc/bind/named.conf.local` akan tampak sebagai berikut
-![img]()
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/f46041a6-9851-4035-a678-c60fe956d447)
+
 
 Lalu pada directory `/etc/bind/hero` akan terdapat dua file yaitu
 
 - `/etc/bind/hero/canyon.b18.com`
-  ![img]()
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/fa53d230-1f64-4d29-b125-42645cb61800)
+
 - `/etc/bind/hero/channel.b18.com`
-  ![img]()
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/f167964b-9d43-4a7b-8771-b5841f0f2209)
+
 
 ## Nomor 1
-
 ### Soal
-
 Lakukan konfigurasi sesuai dengan peta yang sudah diberikan.
 
 Kemudian, karena masih banyak spell yang harus dikumpulkan, bantulah para petualang untuk memenuhi kriteria berikut.:
-
 1. Semua CLIENT harus menggunakan konfigurasi dari DHCP Server.
 
 #### Penyelesaian
-
 Berikut gambar topologi
-![img]()
-Lalu pada setiap client dilakukan konfigurasi pada network settingnya dengan setiap client berisikan
 
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/289982ac-fcbf-444c-8db4-18b93df4b6dd)
+
+
+Lalu pada setiap client dilakukan konfigurasi pada network settingnya dengan setiap client berisikan
 ```sh
 auto eth0
 iface eth0 inet dhcp
 ```
 
 ## Nomor 2 3 5
-
 ### Soal
-
 2. Client yang melalui Switch3 mendapatkan range IP dari [prefix IP].3.16 - [prefix IP].3.32 dan [prefix IP].3.64 - [prefix IP].3.80
 3. Client yang melalui Switch4 mendapatkan range IP dari [prefix IP].4.12 - [prefix IP].4.20 dan [prefix IP].4.160 - [prefix IP].4.168
-4. Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch3 selama 3 menit sedangkan pada client yang melalui Switch4 selama 12 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 96 menit
+5. Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch3 selama 3 menit sedangkan pada client yang melalui Switch4 selama 12 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 96 menit
 
 #### Penyelesaian
-
 Karena DHCP Server tidak terhubung dengan client secara langsung maka lakukan juga konfigurasi untuk DHCP Relay yaitu pada router. Pada DHCP relay lakukan konfigurasi pada `/etc/default/isc-dhcp-relay` dan akan tampak sebagai
-![img]()
-dan pada `/etc/sysctl.conf`, untuk comment pada
 
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/3e05ee6b-442a-4f10-bb1a-162554c96eae)
+
+dan pada `/etc/sysctl.conf`, untuk comment pada
 ```sh
 net.ipv4.ip_forward=1
 ```
-
 Lakukan konfigurasi pada file `/etc/default/isc-dhcp-server` dan akan tampak seperti
-![img]()
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/1270aeb9-80c3-4c6a-bf16-62672864f444)
 
 Lakukan konfigurasi pada file `/etc/dhcp/dhcpd.conf` dan akan tampak seperti
-![img]()
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/f7866ba6-cb5c-458a-b572-696c592095d9)
+
 
 ## Nomor 4
-
 ### Soal
-
 4. Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut
 
 #### Penyelesaian
-
 Lakukan konfigurasi pada DNS Master pada file `/etc/bind/named.conf.options` untuk melakukan forwarder sehingga dapat connect ke internet
-![img]()
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/34b2c1de-c93d-41b4-b4b8-97fc548d9668)
 
 ## Nomor 6
-
 ### Soal
-
 Pada masing-masing worker PHP, lakukan konfigurasi virtual host untuk website berikut dengan menggunakan php 7.3.
 
 ##### Penyelesaian
-
 Pada setiap php worker, lakukan instalasi dengan script berikut
-
 ```sh
 apt-get install php -y
 apt-get install php php-fpm -y
@@ -102,14 +97,12 @@ unzip -o /var/www/granz.channel.b18.com -d /var/www/
 rm /var/www/granz.channel.b18.com
 mv /var/www/modul-3 /var/www/granz.channel.b18.com
 ```
-
 Lalu lakukan konfigurasi pada `/etc/nginx/sites-available/granz.channel.b18.com` dan tampak seperti ini
-![img]()
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/06b3648c-6f01-4258-899c-cf62e9275ae9)
 
 ### Nomor 7
-
 Kepala suku dari Bredt Region memberikan resource server sebagai berikut:
-
 - Lawine, 4GB, 2vCPU, dan 80 GB SSD.
 - Linie, 2GB, 2vCPU, dan 50 GB SSD.
 - Lugner, 1GB, 1vCPU, dan 25 GB SSD.
@@ -117,9 +110,7 @@ Kepala suku dari Bredt Region memberikan resource server sebagai berikut:
 aturlah agar Eisen dapat bekerja dengan maksimal, lalu lakukan testing dengan 1000 request dan 100 request/second.
 
 #### Penyelesaian
-
-Menggunakan Weighted Round Robin maka server yang memiliki weight paling besar akan dijadikan prioritas ketika menerima request dari client. Pada node Eisen jalankan perintah berikut
-
+Menggunakan Weighted Round Robin maka server yang memiliki weight paling besar akan dijadikan prioritas ketika menerima request dari client. Pada node Eisen jalankan perintah berikut 
 ```sh
 echo nameserver 192.168.122.1 > /etc/resolv.conf
 apt-get update
@@ -132,9 +123,7 @@ ln -s /etc/nginx/sites-available/lb-eisen /etc/nginx/sites-enabled
 rm -r /etc/nginx/sites-enabled/default
 service nginx start
 ```
-
 Tambahkan konfigurasi berikut
-
 ```
 upstream myweb {
     server 192.187.3.1 weight=1;
@@ -150,96 +139,155 @@ server {
         }
 ```
 
-Lalu pada node Heiter lakukan konfigurasi pada `/etc/bind/jarkom/granz.channel.b17.com` dan arahklan IP ke Load Balancer `10.17.2.2` dan restart bind9
-
+Lalu pada node Heiter lakukan konfigurasi pada ``/etc/bind/jarkom/granz.channel.b17.com`` dan arahklan IP ke Load Balancer ``10.17.2.2`` dan restart bind9
 ```sh
 service bind9 restart
 ```
 
 **Lakukan testing pada salah satu client**
-
 ```sh
 apt-get install apache2
 service apache2 start
-ab -n 1000 -c 100 192.187.2.2/
+ab -n 1000 -c 100 192.187.2.2/ 
 ```
 
-foto hasil
+**Hasil**
+```
+This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 192.187.2.2 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        nginx/1.14.2
+Server Hostname:        192.187.2.2
+Server Port:            80
+
+Document Path:          /
+Document Length:        195 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.647 seconds
+Complete requests:      1000
+Failed requests:        0
+Non-2xx responses:      1000
+Total transferred:      395000 bytes
+HTML transferred:       195000 bytes
+Requests per second:    1546.04 [#/sec] (mean)
+Time per request:       64.681 [ms] (mean)
+Time per request:       0.647 [ms] (mean, across all concurrent requests)
+Transfer rate:          596.37 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        5   16   7.2     14      36
+Processing:     6   20  17.0     17     269
+Waiting:        6   19  13.2     16     269
+Total:         15   35  18.1     34     288
+
+Percentage of the requests served within a certain time (ms)
+  50%     34
+  66%     38
+  75%     42
+  80%     43
+  90%     49
+  95%     52
+  98%     55
+  99%     64
+ 100%    288 (longest request)
+```
 
 ## Nomor 8
-
 ### Soal
-
 Karena diminta untuk menuliskan grimoire, buatlah analisis hasil testing dengan 200 request dan 10 request/second masing-masing algoritma Load Balancer dengan ketentuan sebagai berikut:
-
 - Nama Algoritma Load Balancer
 - Report hasil testing pada Apache Benchmark
-- Grafik request per second untuk masing masing algoritma.
+- Grafik request per second untuk masing masing algoritma. 
 - Analisis
 
 #### Penyelesaian
-
 **Lakukan testing pada salah satu client**
-
 ```sh
-ab -n 200 -c 10 192.187.2.2/
+ab -n 200 -c 10 192.187.2.2/ 
 ```
 
 - Algo Round Robin ( 691.12 [#/sec] (mean) )
-  foto
 
-- Algo Least Connection ( 635.47 [#/sec] (mean) )
-  foto
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/f4edb98d-18a9-47a0-9100-17175ade26f8)
 
-- Algo IP Hash ( 684.04 [#/sec] (mean) )
-  foto
+
+- Algo Least Connection (  635.47 [#/sec] (mean) )
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/e3808368-9490-4917-80dc-e71ba39f0d43)
+
+
+- Algo IP Hash (  684.04 [#/sec] (mean) )
+  
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/b23eac3b-a0b7-4e01-bc12-27800a836892)
+
 
 - Algo Generic Hash ( 638.46 [#/sec] (mean) )
-  foto
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/8f17fb50-0fc7-42a6-b3e9-78564a006c97)
+
 
 **Grafik request per second**
-foto
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/27292c7c-39ee-4ff9-9dfd-3b507c795889)
+
 
 ## Nomor 9
-
 ### Soal
-
 Dengan menggunakan algoritma Round Robin, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 100 request dengan 10 request/second, kemudian tambahkan grafiknya pada grimoire.
 
 #### Penyelesaian
-
 **Lakukan testing pada salah satu client**
-
 ```sh
-ab -n 100 -c 10 192.187.2.2/
+ab -n 100 -c 10 192.187.2.2/ 
 ```
 
 - 3 Worker
-  foto
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/19a24cfc-d111-4783-84ea-1558840bc957)
+
 - 2 Worker
-  foto
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/8737518c-9411-4d76-b200-20a4adcfcbaa)
+
 - 1 Worker
-  foto
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/239b6a95-2ce1-4a95-bf4f-7ea059e6072c)
+
 
 **Grafik**
-foto
+
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/fe8ecf7c-e4a6-4579-aea2-a4a49d267140)
 
 ## Nomor 10
-
 ### Soal
-
 Selanjutnya coba tambahkan konfigurasi autentikasi di LB dengan dengan kombinasi username: “netics” dan password: “ajkyyy”, dengan yyy merupakan kode kelompok. Terakhir simpan file “htpasswd” nya di /etc/nginx/rahasisakita/
 
 #### Penyelesaian
 
 Lakukan perintah berikut di node Eisen
-
 ```sh
 mkdir /etc/nginx/rahasisakita
 htpasswd -c /etc/nginx/rahasisakita/htpasswd netics
 ```
 
-Lalu, masukkan passwordnya `ajkb18`
+Lalu, masukkan passwordnya ``ajkb18``
 
 Jika sudah memasukkan password dan re-type password. Sekarang bisa dicoba dengan menambahkan command berikut pada setup nginx
 
@@ -249,10 +297,14 @@ auth_basic_user_file /etc/nginx/rahasisakita/ .htpasswd;
 ```
 
 **Lakukan testing pada salah satu client**
-
 ```sh
 lynx 10 192.187.2.2
 ```
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/6d17e55b-4613-4f9d-94b8-a459d3f53654)
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/f9c75dbe-1386-4fc3-8c9e-15cd4c9db2ee)
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/08692179-6969-4935-aa1b-b564a5aa1b5d)
+![image](https://github.com/aryansfw/Jarkom-Modul-3-B18-2023/assets/114483889/968c5255-66de-461b-be6a-d9b7c33762c6)
+
 
 ## Nomor 11
 
